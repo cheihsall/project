@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Truck, ShoppingBag, Leaf, Package } from 'lucide-react';
+import dell from '../assets/dellll.png';
 
 const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -33,8 +34,134 @@ const Hero = () => {
     };
   }, []);
 
+    // Transport animation paths
+    const transportPaths = [
+      "M10,80 Q30,50 50,80 T90,80",
+      "M10,50 Q40,20 70,50 T130,50",
+      "M10,100 Q50,60 90,100 T170,100"
+    ];
+
   return (
-    <section className="relative bg-gradient-to-br from-green-600 via-green-700 to-green-900 text-white py-24 md:py-36 overflow-hidden">
+    <section  className="relative bg-gradient-to-br from-green-900 via-green-500 to-green-900 text-white py-24 md:py-36 overflow-hidden"
+    style={{
+      backgroundImage: `url(${dell})`, // Image de fond
+      backgroundSize: 'cover', // Ajuste l'image pour couvrir toute la section
+      backgroundBlendMode: 'multiply', // Mélange l'image et le dégradé
+      backgroundPosition: 'center', // Centre l'image de fond
+    }}
+  >
+
+
+        {/* Digital circuit lines - AI representation */}
+      <div className="absolute inset-0 opacity-20">
+        {[...Array(8)].map((_, i) => (
+          <div 
+            key={`circuit-${i}`} 
+            className="absolute bg-blue-400"
+            style={{
+              height: `${1 + Math.random() * 2}px`,
+              width: `${100 + Math.random() * 200}px`,
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              transform: `rotate(${Math.random() * 360}deg)`,
+              opacity: 0.3 + Math.random() * 0.7,
+            }}
+          >
+            <div 
+              className="absolute right-0 w-3 h-3 rounded-full bg-blue-400"
+              style={{ 
+                animation: `pulse ${2 + Math.random() * 4}s infinite`,
+                animationDelay: `${Math.random() * 2}s` 
+              }}
+            ></div>
+          </div>
+        ))}
+      </div> 
+      
+      {/* Transport route animations */}
+     <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {transportPaths.map((path, i) => (
+          <svg 
+            key={`path-${i}`} 
+            className="absolute"
+            style={{
+              width: '200px',
+              height: '120px',
+              left: `${Math.random() * 80}%`,
+              top: `${Math.random() * 80}%`,
+              opacity: 0.3,
+            }}
+            viewBox="0 0 200 120"
+          >
+            <path 
+              d={path} 
+              fill="none" 
+              stroke="rgba(255,255,255,0.5)" 
+              strokeWidth="1" 
+              strokeDasharray="5,5"
+            />
+            <circle r="3" fill="#ffffff">
+              <animateMotion 
+                path={path} 
+                dur={`${5 + i * 2}s`} 
+                repeatCount="indefinite"
+                rotate="auto"
+              />
+            </circle>
+          </svg>
+        ))}
+      </div>
+       
+      {/* Floating data points - AI concept */}
+       <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {[...Array(15)].map((_, i) => (
+          <div 
+            key={`data-${i}`} 
+            className="absolute flex items-center justify-center"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animation: `dataFloat ${8 + Math.random() * 15}s linear infinite`,
+              animationDelay: `${Math.random() * 5}s`,
+              opacity: 0.4 + Math.random() * 0.6,
+            }}
+          >
+            <div className={`w-${Math.floor(Math.random() * 3) + 1} h-${Math.floor(Math.random() * 3) + 1} rounded-full bg-blue-300`}></div>
+            <div 
+              className="absolute bg-blue-300/30"
+              style={{
+                height: '1px',
+                width: `${20 + Math.random() * 30}px`,
+                transform: `rotate(${Math.random() * 360}deg)`
+              }}
+            ></div>
+          </div>
+        ))}
+      </div>  <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {[...Array(15)].map((_, i) => (
+          <div 
+            key={`data-${i}`} 
+            className="absolute flex items-center justify-center"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animation: `dataFloat ${8 + Math.random() * 15}s linear infinite`,
+              animationDelay: `${Math.random() * 5}s`,
+              opacity: 0.4 + Math.random() * 0.6,
+            }}
+          >
+            <div className={`w-${Math.floor(Math.random() * 3) + 1} h-${Math.floor(Math.random() * 3) + 1} rounded-full bg-blue-300`}></div>
+            <div 
+              className="absolute bg-blue-300/30"
+              style={{
+                height: '1px',
+                width: `${20 + Math.random() * 30}px`,
+                transform: `rotate(${Math.random() * 360}deg)`
+              }}
+            ></div>
+          </div>
+        ))}
+      </div>
       {/* Éléments décoratifs avec parallaxe */}
       <div className="absolute inset-0 bg-pattern bg-opacity-10"
         style={{ 
@@ -115,7 +242,7 @@ const Hero = () => {
           
           {/* Titre avec animation de texte */}
           <h1 
-            className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-white to-green-200 relative"
+            className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-red bg-clip-text bg-gradient-to-r from-white to-green-200 relative"
             style={{
               opacity: isLoaded ? 1 : 0,
               transform: `translateY(${isLoaded ? '0' : '30px'})`,
@@ -155,7 +282,7 @@ const Hero = () => {
             }}
           >
             <span className="block">
-              {"La logistique urbaine ".split('').map((char, index) => (
+              {"La logistique urbaine_".split('-').map((char, index) => (
                 <span 
                   key={index}
                   className="inline-block"
@@ -170,7 +297,7 @@ const Hero = () => {
                 </span>
               ))}
               <span className="font-semibold">
-                {"durable & inclusive".split('').map((char, index) => (
+                {" durable & inclusive".split('-').map((char, index) => (
                   <span 
                     key={index + 20}
                     className="inline-block"
@@ -187,7 +314,7 @@ const Hero = () => {
               </span>
             </span>
             <span className="block mt-2">
-              {"avec e-commerce intégré".split('').map((char, index) => (
+              {"avec  e-commerce  intégré".split('- ').map((char, index) => (
                 <span 
                   key={index + 40}
                   className="inline-block"
@@ -206,7 +333,7 @@ const Hero = () => {
           
           {/* Encadré d'information avec animation 3D */}
           <div 
-            className="bg-white/15 backdrop-blur-md p-8 rounded-2xl shadow-xl mb-10 transition-all duration-700 ease-out"
+            className="bg-black/15 backdrop-blur-md p-8 rounded-2xl shadow-xl mb-10 transition-all duration-700 ease-out"
             style={{
               opacity: isLoaded ? 1 : 0,
               transform: `perspective(1000px) rotateX(${isLoaded ? '0' : '30deg'}) translateY(${isLoaded ? '0' : '50px'})`,

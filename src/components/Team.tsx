@@ -1,5 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Linkedin, Twitter, Github, Award, Heart, Lightbulb } from 'lucide-react';
+import img from '../assets/ch.png';
+import sarr from '../assets/sarr.jpeg';
+import diallo from '../assets/diallo.jpeg';
+
 
 const Team = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -45,24 +49,24 @@ const Team = () => {
 
   const teamMembers = [
     {
-      name: "Amadou Diop",
+      name: "Cheikh SALL",
       role: "Fondateur & CEO",
-      bio: "Expert en logistique avec 10 ans d'expérience dans le secteur du transport en Afrique de l'Ouest.",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80",
+      bio: "Expert en intelligence numerique, Entrepreneur.",
+      image: img,
       delay: 0.2
     },
     {
-      name: "Fatou Ndiaye",
-      role: "CTO & Co-fondatrice",
-      bio: "Ingénieure en IA avec une expertise en optimisation de routes et systèmes de gestion logistique.",
-      image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80",
+      name: "Assane Diallo",
+      role: "Co-fondateur",
+      bio: "Expert en Automatisation des processus, Expert en logistique.",
+      image: diallo,
       delay: 0.4
     },
     {
-      name: "Ibrahim Sall",
-      role: "COO & Responsable Partenariats",
-      bio: "Entrepreneur social avec une expérience dans le développement de projets à impact en Afrique de l'Ouest.",
-      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80",
+      name: "Mamadou SARR",
+      role: "Co-fondateur",
+      bio: "Ingenieur logicel, Expert en logistique et Objets connectés.",
+      image:sarr,
       delay: 0.6
     }
   ];
@@ -140,7 +144,7 @@ const Team = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-8 mb-16">
           {teamMembers.map((member, index) => (
             <div 
               key={index}
@@ -169,7 +173,7 @@ const Team = () => {
                   className="h-64 bg-gray-200 relative overflow-hidden"
                 >
                   <img 
-                    src={member.image} 
+                    src={member.image}
                     alt={member.name} 
                     className="w-full h-full object-cover transition-all duration-700"
                     style={{
